@@ -1,115 +1,27 @@
-/* ---------------------------------アバウトページ---------------------------- */
-/* --------ヘッダー-------- */
-.l-header{
-    margin-block-end: 64px;
-}
-/* ナブバー */
-.l-navbar{
-    margin-block-end: 64px;
-}
-.c-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-.c-navbar-text{
-    color: white;
-}
-
-
-
-/* --------メイン-------- */
-.l-wrapper {
-    width: 92%;
-    margin: 0 auto;
-}
-.l-card-content{
-    width: 100%;
-    margin-inline: auto;
-    margin-block-end: 157px;
-
-}
-
-/* タイトル */
-.l-header-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin-block-end: 159px;
-
-}
-.c-header-main-title {
-    font-family: "Nothing You Could Do", cursive;
-    font-size: 48px;
-}
-
-.c-header-sub-title {
-    font-family: "Noto Sans JP", sans-serif;
-    font-size: 32px;
-}
-
-
-/* 経歴欄 */
-.c-card-content{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-.c-card-content + *{
-    margin-block-start: 40px;
-}
-.c-card-content-reverse{
-    flex-direction: row-reverse;
-}
-
-.c-card-content-img {
-    width: 320px;
-    height: 200px;
-}
-.c-card-content-text{
-    width: 572px;
-    height: 145px;
-    font-size: 24px;
-}
-
-/* スキル項目 */
-.c-card-skill{
-    width: 220px;
-    justify-content: center;
-    align-items: center;
-    gap: 80px;
-}
-.c-card-skills-text{
-    font-size: 24px;
-}
-
-
-
-
-
-/* --------全体調整-------- */
+/* ==========================================================================
+   共通設定（ヘッダー・レイアウト）
+   ========================================================================== */
 body {
-    background-color: #f5f5f5; /* カンプに近い薄いグレー */
+    background-color: #f5f5f5;
+    color: #333;
 }
 
-/* --------ヘッダー-------- */
 .l-header {
-    background-color: #1a1a1a; /* 真っ黒より少し柔らかな黒 */
+    background-color: #1a1a1a;
     padding-block: 20px;
     margin-block-end: 80px;
 }
 
-.c-navbar {
-    display: flex;
-    justify-content: space-around; /* 間隔を均等に */
-    align-items: center;
+.l-wrapper {
+    width: 90%;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+.c-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .c-navbar-text a {
@@ -119,76 +31,135 @@ body {
     font-weight: bold;
 }
 
-/* --------メイン共通-------- */
-.l-wrapper {
-    width: 90%;
-    max-width: 1000px; /* 広がりすぎないように制限 */
-    margin: 0 auto;
-    /* background-color: palegreen; 不要なら削除 */
-}
-
-/* タイトル部分 */
+/* タイトル共通（ピンクの線付き） */
 .l-header-title {
     display: flex;
     align-items: baseline;
     justify-content: center;
     gap: 20px;
-    margin-block-end: 80px;
+    margin-block-end: 100px;
+    position: relative;
+    padding-bottom: 20px;
 }
 
-/* --------経歴セクション-------- */
+.l-header-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background-color: #ff69b4;
+}
+
+.c-header-main-title {
+    font-family: "Nothing You Could Do", cursive;
+    font-size: 48px;
+}
+
+.c-header-sub-title {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 24px;
+}
+
+/* ==========================================================================
+   Aboutページ（自己紹介・スキル）
+   ========================================================================== */
+
+/* 自己紹介セクション（交互に並ぶ部分） */
 .l-card-content {
     display: flex;
     flex-direction: column;
-    gap: 60px;
-    margin-block-end: 100px;
+    gap: 80px;
+    margin-bottom: 120px;
 }
 
 .c-card-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    gap: 60px;
+}
+
+/* 2つ目の要素を逆転させる */
+.c-card-content-reverse {
+    flex-direction: row-reverse;
 }
 
 .c-card-content-img {
-    width: 320px;
-    height: 200px;
+    width: 45%; /* 幅をパーセントで指定すると安定します */
+    height: auto;
+    aspect-ratio: 3 / 2;
     object-fit: cover;
-    background-color: #ccc; /* 画像がない時のダミー色 */
+    background-color: #ccc;
 }
 
 .c-card-content-text {
-    flex: 1; /* 残りの幅を埋める */
-    font-size: 16px; /* 24pxから少し小さく調整 */
-    line-height: 1.8;
+    flex: 1;
+    font-size: 16px;
+    line-height: 2;
 }
 
-/* --------スキルセクション (ここが重要！) -------- */
+/* スキルセクション（4つ並び） */
 .c-card-content--skills {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
+    margin-top: 100px;
 }
 
 .c-card-skill {
-    width: 22%; /* 4つ並べるので25%弱に設定 */
+    width: 23%;
     text-align: center;
 }
 
-.c-card-skills-img {
-    width: 100px; /* ロゴのサイズを適切に */
-    height: auto;
-    margin-bottom: 20px;
+/* Aboutページのスキルロゴ（丸くしない！） */
+.c-card-skill .c-card-skills-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain; /* ロゴは全体が見えるように */
+    margin: 0 auto 20px;
+    border-radius: 0;      /* Worksの円形設定をリセット */
+    background-color: transparent;
 }
 
 .c-card-skills-text {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6;
-    text-align: left; /* テキストは左寄せが見やすい */
+    text-align: left;
 }
 
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Worksページ（作品集）
+   ========================================================================== */
 
-/* ---------------------------------ワークスページ---------------------------- */
+/* Worksページのカードコンテナ */
+.l-main .c-card-content:not(.c-card-content--skills) {
+    /* 必要に応じてAboutと差分がある場合のみ記述 */
+}
+
+/* Works専用のカードスタイル */
+.c-card-works {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* Worksページのみ画像を丸くする（クラス名で限定するか、Works内のみ適用） */
+.c-card-works .c-card-skills-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%; /* ここで丸くする */
+    background-color: #ccc;
+    margin-bottom: 20px;
+}
+
+.c-card-title {
+    color: #ff0000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
